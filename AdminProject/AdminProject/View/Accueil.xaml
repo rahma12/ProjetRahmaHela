@@ -9,10 +9,10 @@
 
     <Grid Background="White">
         <StackPanel>
-            <Button Name="btnabonnes" Content="gestion des abonnes " Margin="10"/>
-            <Button Name="btlieux" Content="gestion des lieux " Margin="10"/>
-            <Button Name="btnapublications" Content="gestion des publications" Margin="10"/>
-            <Button Name="btncompte" Content="gestion compte admin " Margin="10"/>
+            <Button Name="btnabonnes" Content="gestion des abonnes " Margin="10" Background="MediumSpringGreen"  FontWeight="Normal"  FontStyle="Italic" FontSize="30" Foreground="Green" Height="60" Width="341" HorizontalAlignment="Center"/>
+            <Button Name="btlieux" Content="gestion des lieux " Margin="10" Background="MediumTurquoise" FontWeight="Normal" FontStyle="Italic" FontSize="30" Foreground="Green" Height="65" Width="341" HorizontalAlignment="Center"/>
+            <Button Name="btnapublications" Content="gestion des publications" Margin="10" Background="MediumAquamarine"  FontWeight="Normal" FontStyle="Italic" FontSize="30" Foreground="Green" Height="65" Width="341" HorizontalAlignment="Center"/>
+            <Button Name="btncompte" Content="gestion compte admin " Margin="10" Background="MediumSeaGreen"  FontWeight="Normal" FontStyle="Italic" FontSize="30" Foreground="Green" Height="65" Width="341" HorizontalAlignment="Center"/>
         </StackPanel>
     </Grid>
     <Page.BottomAppBar>
