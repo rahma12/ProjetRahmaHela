@@ -1,0 +1,47 @@
+﻿<Page
+    x:Class="AdminProject.View.GestionLieux.IndexLieux"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AdminProject.View.GestionLieux"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="White">
+        <Pivot>
+            <PivotItem Header="Gestion des Lieux">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="51*"/>
+                        <ColumnDefinition Width="26*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <ListView Name="AfficheLieux" >
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding nom }"/>
+                                        <TextBlock Text="{Binding adresse}"/>
+                                        <TextBlock Text="{Binding ville}"/>
+                                        <TextBlock Text="{Binding codepostal}"/>
+                                        <TextBlock Text="{Binding pays}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <StackPanel>
+                            <TextBox Name="txtnom" PlaceholderText="Nom" Margin="10" LostFocus="txtnom_LostFocus"/>
+                            <TextBox Name="txtadresse" PlaceholderText="Adresse" Margin="10" LostFocus="txtadresse_LostFocus"/>
+                            <TextBox Name="txtville" PlaceholderText="Ville" Margin="10" LostFocus="txtville_LostFocus"/>
+                            <TextBox Name="txtcodepostal" PlaceholderText="code postal" Margin="10" LostFocus="txtcodepostal_LostFocus"/>
+                            <TextBox Name="txtpays" PlaceholderText="Pays" Margin="10" LostFocus="txtpays_LostFocus"/>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </PivotItem>
+        </Pivot>
+
+    </Grid>
+</Page>
