@@ -1,0 +1,54 @@
+﻿<Page
+    x:Class="AdminProject.View.GestionAbonnee.IndexAbonnee"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AdminProject.View.GestionAbonnee"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="White">
+        <Pivot>
+            <PivotItem Header="Gestion des abonnées">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="201*"/>
+                        <ColumnDefinition Width="107*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <ListView Name="afficheabonnee"  >
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding nom}"/>
+                                        <TextBlock Text="{Binding prenom}"/>
+                                        <TextBlock Text="{Binding datenaiss}"/>
+                                        <TextBlock Text="{Binding email}"/>
+                                        
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                            
+
+                        </ListView>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <StackPanel>
+                            <TextBox Name="txtnom" PlaceholderText="nom" Margin="10" LostFocus="txtnom_LostFocus" />
+                            <TextBox Name="txtprenom" PlaceholderText="prenom" Margin="10" LostFocus="txtprenom_LostFocus" />
+                            <TextBox Name="txtemail" PlaceholderText="email" Margin="10" LostFocus="txtemail_LostFocus" />
+                            <PasswordBox Name="txtmdp" PlaceholderText="mot de passe" Margin="10" LostFocus="mdp_LostFocus" />
+                            <PasswordBox Name="txtcmdp" PlaceholderText="confirmer mot de passe" Margin="10" LostFocus="txtcmdp_LostFocus" />
+                            <TextBlock Text="Date de naissance" Margin="10" FontSize="20"/>
+                            <DatePicker Name="txtdate" Margin="10" DateChanged="txtdate_DateChanged"/>
+                            <Button Name="envoyer" Content="envoyer" Margin="10"/>
+                        </StackPanel>
+                        
+                    </Grid>
+                </Grid>
+            </PivotItem>
+        </Pivot>
+
+    </Grid>
+</Page>
