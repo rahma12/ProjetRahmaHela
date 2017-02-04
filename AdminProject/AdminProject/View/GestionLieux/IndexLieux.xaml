@@ -5,6 +5,7 @@
     xmlns:local="using:AdminProject.View.GestionLieux"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
     mc:Ignorable="d">
 
     <Grid Background="White">
@@ -16,15 +17,15 @@
                         <ColumnDefinition Width="26*"/>
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0">
-                        <ListView Name="AfficheLieux" >
+                        <ListView Name="AfficheLieux" SelectionChanged="AfficheLieux_SelectionChanged" >
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding nom }"/>
-                                        <TextBlock Text="{Binding adresse}"/>
-                                        <TextBlock Text="{Binding ville}"/>
-                                        <TextBlock Text="{Binding codepostal}"/>
-                                        <TextBlock Text="{Binding pays}"/>
+                                        <TextBlock Text="{Binding nom }" Margin="10"/>
+                                        <TextBlock Text="{Binding adresse}" Margin="10"/>
+                                        <TextBlock Text="{Binding ville}" Margin="10"/>
+                                        <TextBlock Text="{Binding codepostal}" Margin="10"/>
+                                        <TextBlock Text="{Binding pays}" Margin="10"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
@@ -37,6 +38,10 @@
                             <TextBox Name="txtville" PlaceholderText="Ville" Margin="10" LostFocus="txtville_LostFocus"/>
                             <TextBox Name="txtcodepostal" PlaceholderText="code postal" Margin="10" LostFocus="txtcodepostal_LostFocus"/>
                             <TextBox Name="txtpays" PlaceholderText="Pays" Margin="10" LostFocus="txtpays_LostFocus"/>
+                            <TextBox Name="txtlong" PlaceholderText="longitude" Margin="10" />
+                            <TextBox Name="txtlat" PlaceholderText="latitude" Margin="10" />
+                            <AppBarButton Icon="View" Foreground="Violet" Click="AppBarButton_Click"/>
+                            <Maps:MapControl x:Name="MapControl1" ZoomInteractionMode="GestureAndControl" TiltInteractionMode="GestureAndControl" MapServiceToken="aRUFT83TBRGGvLHqY1v~OmlZB9aUJXE4GTnr4kDhbA~AtV4P4-ujffkO2VfBhPdIiJ2t5sWMPA5bAkXDhOKI17Nhdw0PtdnBT4TkVMyCrrk" Height="200" Width="300"/>
                         </StackPanel>
                     </Grid>
                 </Grid>
@@ -44,4 +49,11 @@
         </Pivot>
 
     </Grid>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Name="btnajout" Icon="Add" Label="ajouter" Click="btnajout_Click" />
+            <AppBarButton Name="btnmodifier" Icon="Edit" Label="Modifier" Click="btnmodifier_Click"/>
+            <AppBarButton Name="btnsupp" Icon="Delete" Label="Supprimer" Click="btnsupp_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>
