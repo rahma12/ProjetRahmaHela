@@ -16,7 +16,7 @@
                         <ColumnDefinition Width="107*"/>
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0">
-                        <ListView Name="afficheabonnee"  >
+                        <ListView Name="afficheabonnee" SelectionChanged="afficheabonnee_SelectionChanged"  >
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
@@ -51,4 +51,10 @@
         </Pivot>
 
     </Grid>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Name="btnmodif" Icon="Edit" Label="Modifier" Click="btnmodif_Click"/>
+            <AppBarButton Name="btnsupp" Icon="Delete" Label="Supprimer" Click="btnsupp_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>

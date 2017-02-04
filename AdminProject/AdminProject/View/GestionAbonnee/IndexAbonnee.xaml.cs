@@ -1,10 +1,13 @@
-﻿using System;
+﻿using AdminProject.Model;
+using Microsoft.WindowsAzure.MobileServices;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -26,9 +29,36 @@ namespace AdminProject.View.GestionAbonnee
         private bool testmdp;
         private bool testdate;
 
+        private MobileServiceCollection<Abonnee, Abonnee> abonnes;
+        private IMobileServiceTable<Abonnee> abonnetable = App.MobileService.GetTable<Abonnee>();
+        Abonnee selectedabonne = new Abonnee();
         public IndexAbonnee()
         {
             this.InitializeComponent();
+            index();
+        }
+
+        private async void index()
+        {
+            try
+            {
+                abonnes = await abonnetable.ToCollectionAsync();
+            }
+            catch (Exception)
+            {
+                MessageDialog msg = new MessageDialog("erreur");
+                msg.ShowAsync();
+            }
+            if (abonnes.Count()==0)
+            {
+                MessageDialog msg = new MessageDialog("pas des abonnées");
+                msg.ShowAsync();
+            }
+            else
+            {
+                afficheabonnee.ItemsSource = abonnes;
+            }
+
         }
 
         private void txtdate_DateChanged(object sender, DatePickerValueChangedEventArgs e)
@@ -83,8 +113,47 @@ namespace AdminProject.View.GestionAbonnee
             }
         }
 
-        
-    
+        private async void btnmodif_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Abonnee abonne = new Abonnee { Id = selectedabonne.Id, nom = txtnom.Text, prenom = txtprenom.Text, datenaiss = txtdate.Date.DateTime, email = txtemail.Text, motdepasse = txtmdp.Password, confirmmotdepasse = txtcmdp.Password };
+                await abonnetable.UpdateAsync(abonne);
+                MessageDialog msg = new MessageDialog("modifié avec succes");
+                msg.ShowAsync();
+            }
+            catch (Exception)
+            {
+                MessageDialog msg = new MessageDialog("erreur");
+                msg.ShowAsync();
+            }
+        }
+
+        private async void btnsupp_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                await abonnetable.DeleteAsync(selectedabonne);
+                MessageDialog msg = new MessageDialog("Supprimé avec succes");
+                msg.ShowAsync();
+            }
+            catch (Exception)
+            {
+                MessageDialog msg = new MessageDialog("erreur");
+                msg.ShowAsync();
+            }
+        }
+
+        private void afficheabonnee_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedabonne = afficheabonnee.SelectedItem as Abonnee;
+            txtnom.Text = selectedabonne.nom;
+            txtprenom.Text = selectedabonne.prenom;
+            txtemail.Text = selectedabonne.email;
+            txtdate.Date = selectedabonne.datenaiss.Date;
+            txtmdp.Password = selectedabonne.motdepasse;
+            txtcmdp.Password = selectedabonne.confirmmotdepasse;
+        }
 
         private void txtemail_LostFocus(object sender, RoutedEventArgs e)
         {
