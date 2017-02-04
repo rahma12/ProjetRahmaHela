@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdminProject.Model
 {
-    public class Lieux
+    public class Lieu
     {
         public String Id { get; set; }
 
@@ -20,7 +20,7 @@ namespace AdminProject.Model
 
         public String ville { get; set; }
 
-        public String codepostal { get; set; }
+        public int codepostal { get; set; }
 
         public String pays { get; set; }
 

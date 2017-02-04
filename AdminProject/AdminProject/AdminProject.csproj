@@ -99,7 +99,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Abonnee.cs" />
-    <Compile Include="Model\Lieux.cs" />
+    <Compile Include="Model\Lieu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\Accueil.xaml.cs">
       <DependentUpon>Accueil.xaml</DependentUpon>
